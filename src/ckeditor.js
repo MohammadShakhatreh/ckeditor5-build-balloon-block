@@ -1,56 +1,65 @@
+/* eslint-disable array-bracket-spacing */
+/* eslint-disable quotes */
 /**
  * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 // The editor creator to use.
-import BalloonEditorBase from '@ckeditor/ckeditor5-editor-balloon/src/ballooneditor';
+import BalloonEditorBase from "@ckeditor/ckeditor5-editor-balloon/src/ballooneditor";
 
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
-import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
-import BlockToolbar from '@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar';
-import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
-import Heading from '@ckeditor/ckeditor5-heading/src/heading';
-import Image from '@ckeditor/ckeditor5-image/src/image';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
-import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
-import ImageToolbar from '@ckeditor/ckeditor5-image/src/imagetoolbar';
-import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
-import Indent from '@ckeditor/ckeditor5-indent/src/indent';
-import Link from '@ckeditor/ckeditor5-link/src/link';
-import List from '@ckeditor/ckeditor5-list/src/list';
-import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
-import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
-import Table from '@ckeditor/ckeditor5-table/src/table';
-import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import MediaEmbed from "@ckeditor/ckeditor5-media-embed/src/mediaembed";
+import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 
-import '../theme/theme.css';
+import Essentials from "@ckeditor/ckeditor5-essentials/src/essentials";
+import Autoformat from "@ckeditor/ckeditor5-autoformat/src/autoformat";
+import BlockToolbar from "@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar";
+
+import Bold from "@ckeditor/ckeditor5-basic-styles/src/bold";
+import Italic from "@ckeditor/ckeditor5-basic-styles/src/italic";
+import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline";
+import Strikethrough from "@ckeditor/ckeditor5-basic-styles/src/strikethrough";
+import Code from "@ckeditor/ckeditor5-basic-styles/src/code";
+import Subscript from "@ckeditor/ckeditor5-basic-styles/src/subscript";
+import Superscript from "@ckeditor/ckeditor5-basic-styles/src/superscript";
+
+import BlockQuote from "@ckeditor/ckeditor5-block-quote/src/blockquote";
+import Heading from "@ckeditor/ckeditor5-heading/src/heading";
+import Image from "@ckeditor/ckeditor5-image/src/image";
+import ImageCaption from "@ckeditor/ckeditor5-image/src/imagecaption";
+import ImageStyle from "@ckeditor/ckeditor5-image/src/imagestyle";
+import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
+import Indent from "@ckeditor/ckeditor5-indent/src/indent";
+import Link from "@ckeditor/ckeditor5-link/src/link";
+import List from "@ckeditor/ckeditor5-list/src/list";
+import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
+import PasteFromOffice from "@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice";
+import Table from "@ckeditor/ckeditor5-table/src/table";
+import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
+import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
+
+import "../theme/theme.css";
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
 // Plugins to include in the build.
 BalloonEditor.builtinPlugins = [
 	Essentials,
-	UploadAdapter,
 	Autoformat,
 	BlockToolbar,
 	Bold,
 	Italic,
+	Underline,
+	Strikethrough,
+	Code,
+	Subscript,
+	Superscript,
 	BlockQuote,
-	CKFinder,
-	EasyImage,
 	Heading,
 	Image,
 	ImageCaption,
 	ImageStyle,
 	ImageToolbar,
-	ImageUpload,
 	Indent,
 	Link,
 	List,
@@ -58,50 +67,104 @@ BalloonEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	CodeBlock,
+	Alignment
 ];
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
+	placeholder: "Content",
 	blockToolbar: [
-		'heading',
-		'|',
-		'bulletedList',
-		'numberedList',
-		'|',
-		'indent',
-		'outdent',
-		'|',
-		'imageUpload',
-		'blockQuote',
-		'insertTable',
-		'mediaEmbed',
-		'|',
-		'undo',
-		'redo'
+		"heading",
+		"|",
+		"bulletedList",
+		"numberedList",
+		"|",
+		"indent",
+		"outdent",
+		"|",
+		"alignment",
+		"codeblock",
+		"blockQuote",
+		"insertTable",
+		"mediaEmbed",
+		"|",
+		"undo",
+		"redo"
 	],
 	toolbar: {
 		items: [
-			'bold',
-			'italic',
-			'link'
+			"bold",
+			"italic",
+			"underline",
+			"strikethrough",
+			"link",
+			"code",
+			"subscript",
+			"superscript"
 		]
 	},
 	image: {
+		// You need to configure the image toolbar, too, so it uses the new style buttons.
 		toolbar: [
-			'imageStyle:full',
-			'imageStyle:side',
-			'|',
-			'imageTextAlternative'
+			"imageStyle:alignLeft",
+			"imageStyle:full",
+			"imageStyle:alignRight",
+			"|",
+			"imageTextAlternative"
+		],
+		styles: [
+			// This option is equal to a situation where no style is applied.
+			"full",
+
+			// This represents an image aligned to the left.
+			"alignLeft",
+
+			// This represents an image aligned to the right.
+			"alignRight"
 		]
 	},
 	table: {
-		contentToolbar: [
-			'tableColumn',
-			'tableRow',
-			'mergeTableCells'
+		contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"]
+	},
+
+	mediaEmbed: {
+		previewsInData: true,
+		removeProviders: [
+			"instagram",
+			"twitter",
+			"googleMaps",
+			"flickr",
+			"facebook"
 		]
 	},
+
+	codeBlock: {
+		languages: [
+			{ language: "plaintext", label: "Plain text" }, // The default language.
+			{ language: "cpp", label: "C/C++" },
+			{ language: "java", label: "Java" },
+			{ language: "cs", label: "C#" },
+			{ language: "css", label: "CSS" },
+			{ language: "xml", label: "HTML/XML" },
+			{ language: "javascript", label: "JavaScript" },
+			{ language: "sql", label: "SQL" },
+			{ language: "python", label: "Python" },
+			{ language: "bash", label: "Bash" },
+			{ language: "shell", label: "Shell Session" },
+			{ language: "json", label: "JSON" },
+			{ language: "php", label: "PHP" },
+			{ language: "kotlin", label: "Kotlin" },
+			{ language: "matlab", label: "Matlab" },
+			{ language: "http", label: "HTTP" },
+			{ language: "makefile", label: "Makefile" },
+			{ language: "x86asm", label: "x86 Assembly" },
+			{ language: "mipsasm", label: "MIPS Assembly" },
+			{ language: "ruby", label: "Ruby" }
+		]
+	},
+
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: "en"
 };
