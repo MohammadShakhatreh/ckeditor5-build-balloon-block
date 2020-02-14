@@ -78,6 +78,7 @@ BalloonEditor.defaultConfig = {
 	blockToolbar: [
 		"heading",
 		"|",
+		"link",
 		"bulletedList",
 		"numberedList",
 		"|",
