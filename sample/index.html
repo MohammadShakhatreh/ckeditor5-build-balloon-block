@@ -28,7 +28,12 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
-	BalloonEditor.create( document.querySelector( '#editor' ) )
+	BalloonEditor.create( document.querySelector( '#editor' ), {
+		language: {
+			ui: 'en',
+			content: 'ar'
+		}
+	} )
 		.then( editor => {
 			window.editor = editor;
 		} )

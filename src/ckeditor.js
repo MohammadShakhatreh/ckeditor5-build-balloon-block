@@ -37,6 +37,7 @@ import PasteFromOffice from "@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from "@ckeditor/ckeditor5-table/src/table";
 import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
+import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
 import "../theme/theme.css";
 
@@ -69,7 +70,8 @@ BalloonEditor.builtinPlugins = [
 	Table,
 	TableToolbar,
 	CodeBlock,
-	Alignment
+	Alignment,
+	TextTransformation
 ];
 
 // Editor configuration.
@@ -94,6 +96,7 @@ BalloonEditor.defaultConfig = {
 		"undo",
 		"redo"
 	],
+
 	toolbar: {
 		items: [
 			"bold",
@@ -106,6 +109,7 @@ BalloonEditor.defaultConfig = {
 			"superscript"
 		]
 	},
+
 	image: {
 		// You need to configure the image toolbar, too, so it uses the new style buttons.
 		toolbar: [
@@ -126,6 +130,7 @@ BalloonEditor.defaultConfig = {
 			"alignRight"
 		]
 	},
+
 	table: {
 		contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"]
 	},
@@ -167,5 +172,5 @@ BalloonEditor.defaultConfig = {
 	},
 
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: "en"
+	language: 'en'
 };
